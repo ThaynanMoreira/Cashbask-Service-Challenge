@@ -5,8 +5,8 @@ const validators = require('./validators')
 const jwtMiddleware = rfr('/helpers/jwt').middleware
 
 // Create
-router.post('/', [validators.create, validators.uniqueEmailValidator, 
-    validators.uniqueUsernameValidator, validators.uniquePersonalDocumentValidator], controller.create)
+router.post('/', [validators.create, validators.uniqueEmailValidator,
+  validators.uniqueUsernameValidator, validators.uniquePersonalDocumentValidator], controller.create)
 
 // Get
 router.get('/', [jwtMiddleware], controller.find)
@@ -22,8 +22,8 @@ router.get('/mycash', [jwtMiddleware], controller.getCashbackAmount)
 router.get('/:id', [jwtMiddleware], controller.findById)
 
 // Update
-router.patch('/:id', [jwtMiddleware, validators.update, validators.uniqueEmailValidator, 
-    validators.uniqueUsernameValidator, validators.uniquePersonalDocumentValidator], controller.findOneAndUpdate)
+router.patch('/:id', [jwtMiddleware, validators.update, validators.uniqueEmailValidator,
+  validators.uniqueUsernameValidator, validators.uniquePersonalDocumentValidator], controller.findOneAndUpdate)
 
 // Delete
 router.delete('/:id', [jwtMiddleware], controller.remove)

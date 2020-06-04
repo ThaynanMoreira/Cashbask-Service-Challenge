@@ -3,8 +3,8 @@ module.exports = (model) => {
     try {
       const query = {}
       const pagOptions = {
-        page: (isNaN(req.query.page)? false: req.query.page - 1) || 0,
-        limit: (isNaN(req.query.limit)? false: Number(req.query.limit)) || 15
+        page: (isNaN(req.query.page) ? false : req.query.page - 1) || 0,
+        limit: (isNaN(req.query.limit) ? false : Number(req.query.limit)) || 15
       }
       const total = await model.countDocuments(query)
       const meta = {

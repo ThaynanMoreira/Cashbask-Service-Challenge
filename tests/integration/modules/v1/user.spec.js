@@ -206,7 +206,6 @@ describe(ENDPOINT, () => {
     })
   })
 
-
   describe('GET /mycash', () => {
     it('should not accept unauthenticated request', async () => {
       const expectedMessage = {error: 'no_token'}

@@ -101,8 +101,7 @@ const customMethods = {
 
       const urlsPath = path.join(global._base, '/tmp/activated_logins/', 'activated_login_url.txt')
       require('fs-extra').ensureFileSync(urlsPath)
-      file = fs.openSync(urlsPath, 'a');
-      fs.appendFileSync(file, `\nhttp://${process.env.ACTIVATED_URL}/${user.passwordToken}`)
+      fs.appendFileSync(urlsPath, `\nhttp://${process.env.ACTIVATED_URL}/${user.passwordToken}`)
 
       const jsonUser = user.toJSON()
       delete jsonUser.passwordToken
