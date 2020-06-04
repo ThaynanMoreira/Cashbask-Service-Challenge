@@ -138,4 +138,24 @@ describe(ENDPOINT, () => {
       expect(res.body.error).to.equal('jwt_malformed')
     })
   })
+
+
+  describe('GET /', () => {
+
+    it('should respond with success status and validate if user is active on db', async () => {
+      const userCount = await Model.find({}).count().exec()
+      const userData = {email: 'testing02@gmail.com', password: 'potato02', username: 'potatouser02', personalDocument: '0987654321098', name: 'batata test', passwordToken: '1234567890'}
+      const user = await Model.create(userData)
+      
+      const res = await request(app)
+        .get(`${ENDPOINT}/activatelogin/${user.passwordToken}`)
+        .expect(204)
+
+      const activeUserFind = await Model.find({username: user.username}).exec()
+      expect(activeUserFind.passwordToken).to.null
+      expect(activeUserFind.active).to.true
+      Model.remove({username: 'potatouser02'})
+    }).timeout(10000)
+
+  })
 })

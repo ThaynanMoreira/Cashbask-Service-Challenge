@@ -206,6 +206,30 @@ describe(ENDPOINT, () => {
     })
   })
 
+
+  describe('GET /mycash', () => {
+    it('should not accept unauthenticated request', async () => {
+      const expectedMessage = {error: 'no_token'}
+      const res = await request(app)
+        .get(`${ENDPOINT}/mycash`)
+        .expect(401)
+
+      expect(res.type).to.equal(`application/json`)
+      expect(res.body).to.deep.equal(expectedMessage)
+    })
+
+    it('should respond a valid found entity', async () => {
+      const res = await request(app)
+        .get(`${ENDPOINT}/mycash`)
+        .set(authorizedHeader)
+        .expect(200)
+
+      expect(res.type).to.equal(`application/json`)
+      expect(res.body).to.be.an('object')
+      expect(res.body).to.contain.all.keys(['credit'])
+    })
+  })
+
   describe('PATCH /:id', () => {
     let someNewUser
 
