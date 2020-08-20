@@ -18,7 +18,7 @@
     "test:report:text": "nyc --reporter=text-summary --reporter=text mocha tests/**/*.spec.js"
   },
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "1.18.2",
     "busboy": "^0.2.14",
     "bytes": "3.0.0",
