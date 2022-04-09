@@ -31,7 +31,7 @@
     "extend": "^3.0.0",
     "fs-extra": "5.0.0",
     "jsonwebtoken": "8.1.1",
-    "moment": "2.20.1",
+    "moment": "2.29.2",
     "mongo-dot-notation": "^1.2.0",
     "mongoose": "^5.7.12",
     "mongoose-bcrypt": "^1.4.2",
